@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://kingofkingss.github.io">
-  <title>Archives: 2017 | Hexo</title>
+  <title>Runtime－关联对象原理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://kingofkingss.github.io/archives/2017/index.html">
+  <meta name="description" content="OC RunTime关联对象核心方法 void objc_setAssociatedObject(id object, void *key, id value, objc_AssociationPolicy policy) id objc_getAssociatedObject(id object, void *key) void objc_removeAssociatedObjects(id o">
+<meta name="keywords" content="iOS-Runtime基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Runtime－关联对象原理">
+<meta property="og:url" content="https://kingofkingss.github.io/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="OC RunTime关联对象核心方法 void objc_setAssociatedObject(id object, void *key, id value, objc_AssociationPolicy policy) id objc_getAssociatedObject(id object, void *key) void objc_removeAssociatedObjects(id o">
+<meta property="og:updated_time" content="2017-05-11T02:08:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Runtime－关联对象原理">
+<meta name="twitter:description" content="OC RunTime关联对象核心方法 void objc_setAssociatedObject(id object, void *key, id value, objc_AssociationPolicy policy) id objc_getAssociatedObject(id object, void *key) void objc_removeAssociatedObjects(id o">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -149,340 +154,66 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-iOS/Runtime/2017-02-05-iOS-Runtime" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/01/DataStructure/2017-07-01-DataStructure/" class="archive-article-date">
-  	<time datetime="2017-07-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/DataStructure/2017-07-01-DataStructure/">线性表- 顺序存储</a>
+    <h1 class="article-title" itemprop="name">
+      Runtime－关联对象原理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/DataBase/Sqlite/2017-06-02-iOS-Sqlite/" class="archive-article-date">
-  	<time datetime="2017-06-02T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/DataBase/Sqlite/2017-06-02-iOS-Sqlite/">sqlite-事务操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sqlite基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/" class="archive-article-date">
-  	<time datetime="2017-06-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/">sqlite-事务基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sqlite基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/10/hello/" class="archive-article-date">
-  	<time datetime="2017-05-10T06:15:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/10/hello/">hello world</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello World</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/" class="archive-article-date">
-  	<time datetime="2017-05-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/">lianzi-项目框架初始化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">项目-联子</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/">Runtime－实现KVO</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/">Runtime－多继承的实现</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/06/iOS/Runtime/2017-02-07-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/06/iOS/Runtime/2017-02-07-iOS-Runtime/">Runtime－hook技术</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/" class="archive-article-date">
+        
+        <a href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/" class="archive-article-date">
   	<time datetime="2017-02-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/">Runtime－关联对象原理</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OC-RunTime关联对象"><a href="#OC-RunTime关联对象" class="headerlink" title="OC RunTime关联对象"></a>OC RunTime关联对象</h1><h2 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h2><ol>
+<li>void objc_setAssociatedObject(id object, void *key, id value, objc_AssociationPolicy policy)</li>
+<li>id objc_getAssociatedObject(id object, void *key)</li>
+<li>void objc_removeAssociatedObjects(id object)</li>
+</ol>
+<a id="more"></a>
+<h2 id="方法介绍"><a href="#方法介绍" class="headerlink" title="方法介绍"></a>方法介绍</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">objc_setAssociatedObject：</div><div class="line">    1. 该方法用来，向实例对象中添加关联属性，和删除实例对象中的某个关联属性</div><div class="line">    2. 参数介绍：</div><div class="line">        1) object: 实例对象</div><div class="line">        2) key:    关联属性所需的key，用key来找到实例对象下的对应关联属性</div><div class="line">        3) value:  关联属性</div><div class="line">        3) policy: 关联策略</div><div class="line">    3. 一般key使用getter方法的SEL指针标示，不需要额外再定义指针了。</div><div class="line">        </div><div class="line"></div><div class="line">    </div><div class="line">objc_removeAssociatedObjects:</div><div class="line">    1. 删除实例对象中所有的关联属性。</div></pre></td></tr></table></figure>
+<h2 id="关联策略"><a href="#关联策略" class="headerlink" title="关联策略"></a>关联策略</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) &#123;</div><div class="line">    OBJC_ASSOCIATION_ASSIGN = 0,  // (nonatomic, assign)</div><div class="line">    OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, // (nonatomic, retain)</div><div class="line">    OBJC_ASSOCIATION_COPY_NONATOMIC = 3,  // (nonatomic, copy)     </div><div class="line">    OBJC_ASSOCIATION_RETAIN = 01401,   // (atomic, retain)     </div><div class="line">    OBJC_ASSOCIATION_COPY = 01403     // (atomic, copy) </div><div class="line">&#125;;</div><div class="line"></div><div class="line">note:</div><div class="line">    1. 使用 &quot;OBJC_ASSOCIATION_ASSIGN&quot; 方式的关联策略必须注意，当关联属性被释放时，指针不会被置为</div><div class="line">       0x00，这样就会出现野指针现象。通过objc_getAssociatedObject()方法获取指向关联属性的指针时，</div><div class="line">       程序必崩溃。</div></pre></td></tr></table></figure>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">关联属性存储结构:</div><div class="line">    1、AssociationsManager管理对象中维护AssociationsHashMap哈希Map，保存着实例对象地址与ObjectAssociationMap映射关系。</div><div class="line">    2、ObjectAssociationMap还是一个哈希Map，保存key与关联属性的映射关系。</div><div class="line">    3、使用objc_removeAssociatedObjects()方法，直接将ObjectAssociationMap干掉，所以该实例对象下的所有关联属性，都没有了。</div></pre></td></tr></table></figure>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码:"></a>源代码:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">objc_setAssociatedObject</div><div class="line"></div><div class="line">我们可以在 objc-references.mm 文件中找到 objc_setAssociatedObject 函数最终调用的函数：</div><div class="line"></div><div class="line">void _object_set_associative_reference(id object, void *key, id value, uintptr_t policy) &#123;</div><div class="line">    // retain the new value (if any) outside the lock.</div><div class="line">    ObjcAssociation old_association(0, nil);</div><div class="line">    id new_value = value ? acquireValue(value, policy) : nil;</div><div class="line">    &#123;</div><div class="line">        AssociationsManager manager;</div><div class="line">        AssociationsHashMap &amp;associations(manager.associations());</div><div class="line">        disguised_ptr_t disguised_object = DISGUISE(object);</div><div class="line">        if (new_value) &#123;</div><div class="line">            // break any existing association.</div><div class="line">            AssociationsHashMap::iterator i = associations.find(disguised_object);</div><div class="line">            if (i != associations.end()) &#123;</div><div class="line">                // secondary table exists</div><div class="line">                ObjectAssociationMap *refs = i-&gt;second;</div><div class="line">                ObjectAssociationMap::iterator j = refs-&gt;find(key);</div><div class="line">                if (j != refs-&gt;end()) &#123;</div><div class="line">                    old_association = j-&gt;second;</div><div class="line">                    j-&gt;second = ObjcAssociation(policy, new_value);</div><div class="line">                &#125; else &#123;</div><div class="line">                    (*refs)[key] = ObjcAssociation(policy, new_value);</div><div class="line">                &#125;</div><div class="line">            &#125; else &#123;</div><div class="line">                // create the new association (first time).</div><div class="line">                ObjectAssociationMap *refs = new ObjectAssociationMap;</div><div class="line">                associations[disguised_object] = refs;</div><div class="line">                (*refs)[key] = ObjcAssociation(policy, new_value);</div><div class="line">                object-&gt;setHasAssociatedObjects();</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123;</div><div class="line">            // setting the association to nil breaks the association.</div><div class="line">            AssociationsHashMap::iterator i = associations.find(disguised_object);</div><div class="line">            if (i !=  associations.end()) &#123;</div><div class="line">                ObjectAssociationMap *refs = i-&gt;second;</div><div class="line">                ObjectAssociationMap::iterator j = refs-&gt;find(key);</div><div class="line">                if (j != refs-&gt;end()) &#123;</div><div class="line">                    old_association = j-&gt;second;</div><div class="line">                    refs-&gt;erase(j);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    // release the old value (outside of the lock).</div><div class="line">    if (old_association.hasValue()) ReleaseValue()(old_association);</div><div class="line">&#125;</div><div class="line">在看这段代码前，我们需要先了解一下几个数据结构以及它们之间的关系：</div><div class="line"></div><div class="line">AssociationsManager 是顶级的对象，维护了一个从 spinlock_t 锁到 AssociationsHashMap 哈希表的单例键值对映射；</div><div class="line">AssociationsHashMap 是一个无序的哈希表，维护了从对象地址到 ObjectAssociationMap 的映射；</div><div class="line">ObjectAssociationMap 是一个 C++ 中的 map ，维护了从 key 到 ObjcAssociation 的映射，即关联记录；</div><div class="line">ObjcAssociation 是一个 C++ 的类，表示一个具体的关联结构，主要包括两个实例变量，_policy 表示关联策略，_value 表示关联对象。</div><div class="line">每一个对象地址对应一个 ObjectAssociationMap 对象，而一个 ObjectAssociationMap 对象保存着这个对象的若干个关联记录。</div><div class="line"></div><div class="line"></div><div class="line">objc_getAssociatedObject</div><div class="line"></div><div class="line">同样的，我们也可以在 objc-references.mm 文件中找到 objc_getAssociatedObject 函数最终调用的函数：</div><div class="line"></div><div class="line">id _object_get_associative_reference(id object, void *key) &#123;</div><div class="line">    id value = nil;</div><div class="line">    uintptr_t policy = OBJC_ASSOCIATION_ASSIGN;</div><div class="line">    &#123;</div><div class="line">        AssociationsManager manager;</div><div class="line">        AssociationsHashMap &amp;associations(manager.associations());</div><div class="line">        disguised_ptr_t disguised_object = DISGUISE(object);</div><div class="line">        AssociationsHashMap::iterator i = associations.find(disguised_object);</div><div class="line">        if (i != associations.end()) &#123;</div><div class="line">            ObjectAssociationMap *refs = i-&gt;second;</div><div class="line">            ObjectAssociationMap::iterator j = refs-&gt;find(key);</div><div class="line">            if (j != refs-&gt;end()) &#123;</div><div class="line">                ObjcAssociation &amp;entry = j-&gt;second;</div><div class="line">                value = entry.value();</div><div class="line">                policy = entry.policy();</div><div class="line">                if (policy &amp; OBJC_ASSOCIATION_GETTER_RETAIN) ((id(*)(id, SEL))objc_msgSend)(value, SEL_retain);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if (value &amp;&amp; (policy &amp; OBJC_ASSOCIATION_GETTER_AUTORELEASE)) &#123;</div><div class="line">        ((id(*)(id, SEL))objc_msgSend)(value, SEL_autorelease);</div><div class="line">    &#125;</div><div class="line">    return value;</div><div class="line">&#125;</div><div class="line">看懂了 objc_setAssociatedObject 函数后，objc_getAssociatedObject 函数对我们来说就是小菜一碟了。这个函数先根据对象地址在 AssociationsHashMap 中查找其对应的 ObjectAssociationMap 对象，如果能找到则进一步根据 key 在 ObjectAssociationMap 对象中查找这个 key 所对应的关联结构 ObjcAssociation ，如果能找到则返回 ObjcAssociation 对象的 value 值，否则返回 nil 。</div><div class="line"></div><div class="line"></div><div class="line">objc_removeAssociatedObjects</div><div class="line"></div><div class="line">同理，我们也可以在 objc-references.mm 文件中找到 objc_removeAssociatedObjects 函数最终调用的函数：</div><div class="line"></div><div class="line">void _object_remove_assocations(id object) &#123;</div><div class="line">    vector&lt; ObjcAssociation,ObjcAllocator&lt;ObjcAssociation&gt; &gt; elements;</div><div class="line">    &#123;</div><div class="line">        AssociationsManager manager;</div><div class="line">        AssociationsHashMap &amp;associations(manager.associations());</div><div class="line">        if (associations.size() == 0) return;</div><div class="line">        disguised_ptr_t disguised_object = DISGUISE(object);</div><div class="line">        AssociationsHashMap::iterator i = associations.find(disguised_object);</div><div class="line">        if (i != associations.end()) &#123;</div><div class="line">            // copy all of the associations that need to be removed.</div><div class="line">            ObjectAssociationMap *refs = i-&gt;second;</div><div class="line">            for (ObjectAssociationMap::iterator j = refs-&gt;begin(), end = refs-&gt;end(); j != end; ++j) &#123;</div><div class="line">                elements.push_back(j-&gt;second);</div><div class="line">            &#125;</div><div class="line">            // remove the secondary table.</div><div class="line">            delete refs;</div><div class="line">            associations.erase(i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    // the calls to releaseValue() happen outside of the lock.</div><div class="line">    for_each(elements.begin(), elements.end(), ReleaseValue());</div><div class="line">&#125;</div><div class="line">这个函数负责移除一个对象的所有关联对象，具体实现也是先根据对象的地址获取其对应的 ObjectAssociationMap 对象，然后将所有的关联结构保存到一个 vector 中，最终释放 vector 中保存的所有关联对象。根据前面的实验观察到的情况，在一个对象被释放时，也正是调用的这个函数来移除其所有的关联对象。</div></pre></td></tr></table></figure>
+<h2 id="note"><a href="#note" class="headerlink" title="note:"></a>note:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. 类对象也可以添加关联属性。</div><div class="line">2.</div></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -494,171 +225,98 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/">Runtime－消息发送、消息转发</a>
-    </h1>
+    <a href="/2017/02/06/iOS/Runtime/2017-02-07-iOS-Runtime/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Runtime－hook技术
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Runtime－消息发送、消息转发</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/04/iOS/Runtime/2017-02-03-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/04/iOS/Runtime/2017-02-03-iOS-Runtime/">实践Runtime－Model转SQL</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/02/iOS/Runtime/2017-02-02-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-02T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/02/iOS/Runtime/2017-02-02-iOS-Runtime/">Runtime－方法解释</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/">OC中实例对象、类对象、元对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -681,8 +339,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

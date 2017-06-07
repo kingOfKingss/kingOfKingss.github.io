@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://kingofkingss.github.io">
-  <title>Archives: 2017 | Hexo</title>
+  <title>Runtime－实现KVO | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://kingofkingss.github.io/archives/2017/index.html">
+  <meta name="description" content="OC RunTimeKVO原理">
+<meta name="keywords" content="iOS-Runtime基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Runtime－实现KVO">
+<meta property="og:url" content="https://kingofkingss.github.io/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="OC RunTimeKVO原理">
+<meta property="og:image" content="https://kingofkingss.github.io/img/iOS/2017-02-06-iOS-Runtime_1.png">
+<meta property="og:updated_time" content="2017-05-11T10:42:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Runtime－实现KVO">
+<meta name="twitter:description" content="OC RunTimeKVO原理">
+<meta name="twitter:image" content="https://kingofkingss.github.io/img/iOS/2017-02-06-iOS-Runtime_1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -149,226 +156,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-iOS/Runtime/2017-02-06-iOS-Runtime" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Runtime－实现KVO
+    </h1>
+  
+
+        
+        <a href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/" class="archive-article-date">
+  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OC-RunTimeKVO原理"><a href="#OC-RunTimeKVO原理" class="headerlink" title="OC RunTimeKVO原理"></a>OC RunTimeKVO原理</h1><p><img src="/img/iOS/2017-02-06-iOS-Runtime_1.png" alt=""></p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">前提：A观察B</div><div class="line"></div><div class="line">1、创建一个B的子类C</div><div class="line">2、在子类C中重写B的set方法</div><div class="line">3、将B的实例对象的isa指针指向子类C。</div></pre></td></tr></table></figure>
+<h1 id="让人诟病的KVO？"><a href="#让人诟病的KVO？" class="headerlink" title="让人诟病的KVO？"></a>让人诟病的KVO？</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1、KVO中涉及的所有对象都是弱引用，即用户需要对象的强引用，否则KVO直接导致程序崩溃。</div><div class="line">2、KVO都是隐式的做一些操作，给debug的调试带来了巨大的麻烦，尤其是团队合作的时候。</div><div class="line">3、KVO不允许自定义方法，必须重写固定的方法，父类和子类响应的方法相同，(哎)自己来区分是让子类还是父类来处理。</div><div class="line">4、KVO注册后，当被观察者销毁时，要记得删除KVO，否则直接导致程序崩溃。</div><div class="line">5、根据观察者和路径删除一次以上会导致程序的崩溃。</div></pre></td></tr></table></figure>
+<h1 id="自己实现KVO"><a href="#自己实现KVO" class="headerlink" title="自己实现KVO"></a>自己实现KVO</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">typedef void(^PGObservingBlock)(id observedObject, NSString *observedKey, id oldValue, id newValue);</div><div class="line">@interface NSObject (KVOs)</div><div class="line"></div><div class="line">- (void)ZP_addObserver:(id)observer key:(NSString *)property block:(PGObservingBlock)methodBlock;</div><div class="line"></div><div class="line">- (void)ZP_removeObserver:(id)observer key:(NSString *)property;</div><div class="line">@end</div><div class="line"></div><div class="line"></div><div class="line">#import &quot;NSObject+KVOs.h&quot;</div><div class="line">#import &lt;objc/objc-runtime.h&gt;</div><div class="line">#define ZPKVOObject_ @&quot;ZPKVOObject_&quot;</div><div class="line"></div><div class="line">NSString *const kZPKVOAssociatedObservers = @&quot;kZPKVOAssociatedObservers&quot;;</div><div class="line"></div><div class="line"></div><div class="line">#pragma mark - ZPObservationInfo</div><div class="line">@interface ZPObservationInfo : NSObject</div><div class="line"></div><div class="line">@property (nonatomic, weak) NSObject *observer;</div><div class="line">@property (nonatomic, copy) NSString *key;</div><div class="line">@property (nonatomic, copy) PGObservingBlock setfunc;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ZPObservationInfo</div><div class="line"></div><div class="line">- (instancetype)initWithObserver:(NSObject *)observer Key:(NSString *)key block:(PGObservingBlock)setfunc</div><div class="line">&#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self) &#123;</div><div class="line">        _observer = observer;</div><div class="line">        _key = key;</div><div class="line">        _setfunc = setfunc;</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line"></div><div class="line">@implementation NSObject (KVOs)</div><div class="line"></div><div class="line"></div><div class="line">- (void)ZP_addObserver:(id)observer key:(NSString *)property block:(PGObservingBlock)methodBlock</div><div class="line">&#123;</div><div class="line">    NSString *setFun_str = setterForGetter(property);</div><div class="line">    SEL setFun_sel = NSSelectorFromString(setFun_str);</div><div class="line">    if (![self respondsToSelector:setFun_sel]) &#123;</div><div class="line">        NSLog(@&quot;没有该参数的set方法&quot;);</div><div class="line">    &#125;</div><div class="line">    NSString *selfClassName = NSStringFromClass([self class]);</div><div class="line">    Class subClass = NSClassFromString([NSString stringWithFormat:@&quot;%@%@&quot;, ZPKVOObject_, selfClassName]);</div><div class="line">    </div><div class="line">    if (!subClass) &#123;</div><div class="line">        subClass = [self createKVOClassOfClass:setFun_sel];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    object_setClass(self, subClass);</div><div class="line">    </div><div class="line">    id objc = objc_getAssociatedObject(self, &amp;kZPKVOAssociatedObservers);</div><div class="line">    </div><div class="line">    if (!objc) &#123;</div><div class="line">        NSMutableArray *arrm = [NSMutableArray array];</div><div class="line">        objc_setAssociatedObject(self, &amp;kZPKVOAssociatedObservers, arrm, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">    &#125;</div><div class="line">    NSMutableArray *observers = objc_getAssociatedObject(self, &amp;kZPKVOAssociatedObservers);</div><div class="line">    ZPObservationInfo *info = [[ZPObservationInfo alloc] initWithObserver:self Key:property block:methodBlock];</div><div class="line">    [observers addObject:info];</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)ZP_removeObserver:(id)observer key:(NSString *)property</div><div class="line">&#123;</div><div class="line">    NSMutableArray *observers = objc_getAssociatedObject(self, &amp;kZPKVOAssociatedObservers);</div><div class="line">    ZPObservationInfo *descInfo = nil;</div><div class="line">    for (ZPObservationInfo *info in observers) &#123;</div><div class="line">        if (info.observer == observer || [property isEqualToString:info.key]) &#123;</div><div class="line">            descInfo = info;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    if (descInfo) &#123;</div><div class="line">        [observers removeObject:descInfo];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    if (observers.count == 0) &#123;</div><div class="line">        objc_setAssociatedObject(self, &amp;kZPKVOAssociatedObservers, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (Class)createKVOClassOfClass:(SEL)setfunc</div><div class="line">&#123;</div><div class="line">    NSString *nameOfClass = NSStringFromClass([self class]);</div><div class="line">    const char *subClassName = [NSString stringWithFormat:@&quot;%@%@&quot;, ZPKVOObject_, nameOfClass].UTF8String;</div><div class="line">    Class newClazz = objc_allocateClassPair([self class], subClassName, 0);</div><div class="line">    Method m = class_getInstanceMethod(newClazz, setfunc);</div><div class="line">    const char *type = method_getTypeEncoding(m);</div><div class="line">    class_addMethod(newClazz, setfunc, (IMP)kvoSetter, type);</div><div class="line">    objc_registerClassPair(newClazz);</div><div class="line">    return newClazz;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void kvoSetter(id obj, SEL setter, id value)&#123;</div><div class="line"></div><div class="line">    Class superClass = class_getSuperclass(object_getClass(obj));</div><div class="line">    struct objc_super objSuper = &#123;</div><div class="line">        obj,</div><div class="line">        superClass</div><div class="line">    &#125;;</div><div class="line">    (((void(*)(struct objc_super *, SEL, id))objc_msgSendSuper)(&amp;objSuper, setter, value));</div><div class="line">    </div><div class="line">    NSMutableArray *observers = objc_getAssociatedObject(obj, &amp;kZPKVOAssociatedObservers);</div><div class="line">    ZPObservationInfo *descInfo = nil;</div><div class="line">    for (ZPObservationInfo *info in observers) &#123;</div><div class="line">        if (info.observer == obj || [NSStringFromSelector(setter) isEqualToString:info.key]) &#123;</div><div class="line">            descInfo = info;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    descInfo.setfunc(obj, descInfo.key, [obj valueForKey:getterForSetter(NSStringFromSelector(setter))], value);</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">static NSString * getterForSetter(NSString *setter)</div><div class="line">&#123;</div><div class="line">    if (setter.length &lt;=0 || ![setter hasPrefix:@&quot;set&quot;] || ![setter hasSuffix:@&quot;:&quot;]) &#123;</div><div class="line">        return nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // remove &apos;set&apos; at the begining and &apos;:&apos; at the end</div><div class="line">    NSRange range = NSMakeRange(3, setter.length - 4);</div><div class="line">    NSString *key = [setter substringWithRange:range];</div><div class="line">    </div><div class="line">    // lower case the first letter</div><div class="line">    NSString *firstLetter = [[key substringToIndex:1] lowercaseString];</div><div class="line">    key = [key stringByReplacingCharactersInRange:NSMakeRange(0, 1)</div><div class="line">                                       withString:firstLetter];</div><div class="line">    </div><div class="line">    return key;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">static NSString * setterForGetter(NSString *getter)</div><div class="line">&#123;</div><div class="line">    if (getter.length &lt;= 0) &#123;</div><div class="line">        return nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // upper case the first letter</div><div class="line">    NSString *firstLetter = [[getter substringToIndex:1] uppercaseString];</div><div class="line">    NSString *remainingLetters = [getter substringFromIndex:1];</div><div class="line">    </div><div class="line">    // add &apos;set&apos; at the begining and &apos;:&apos; at the end</div><div class="line">    NSString *setter = [NSString stringWithFormat:@&quot;set%@%@:&quot;, firstLetter, remainingLetters];</div><div class="line">    </div><div class="line">    return setter;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/01/DataStructure/2017-07-01-DataStructure/" class="archive-article-date">
-  	<time datetime="2017-07-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/DataStructure/2017-07-01-DataStructure/">线性表- 顺序存储</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/DataBase/Sqlite/2017-06-02-iOS-Sqlite/" class="archive-article-date">
-  	<time datetime="2017-06-02T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/DataBase/Sqlite/2017-06-02-iOS-Sqlite/">sqlite-事务操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sqlite基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/" class="archive-article-date">
-  	<time datetime="2017-06-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/">sqlite-事务基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sqlite基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/10/hello/" class="archive-article-date">
-  	<time datetime="2017-05-10T06:15:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/10/hello/">hello world</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello World</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/" class="archive-article-date">
-  	<time datetime="2017-05-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/">lianzi-项目框架初始化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">项目-联子</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/">Runtime－实现KVO</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -380,285 +221,98 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/">Runtime－多继承的实现</a>
-    </h1>
+    <a href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          lianzi-项目框架初始化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Runtime－多继承的实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/06/iOS/Runtime/2017-02-07-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/06/iOS/Runtime/2017-02-07-iOS-Runtime/">Runtime－hook技术</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/">Runtime－关联对象原理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/">Runtime－消息发送、消息转发</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/04/iOS/Runtime/2017-02-03-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/04/iOS/Runtime/2017-02-03-iOS-Runtime/">实践Runtime－Model转SQL</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/02/iOS/Runtime/2017-02-02-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-02T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/02/iOS/Runtime/2017-02-02-iOS-Runtime/">Runtime－方法解释</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/">OC中实例对象、类对象、元对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -681,8 +335,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

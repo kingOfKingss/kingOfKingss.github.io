@@ -6,14 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://kingofkingss.github.io">
-  <title>Archives: 2017 | Hexo</title>
+  <title>sqlite-事务操作 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://kingofkingss.github.io/archives/2017/index.html">
+  <meta name="description" content="内存结构">
+<meta name="keywords" content="sqlite基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqlite-事务操作">
+<meta property="og:url" content="https://kingofkingss.github.io/2017/06/02/DataBase/Sqlite/2017-06-02-iOS-Sqlite/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="内存结构">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_1.jpeg">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_2.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_3.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_4.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_5.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_6.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_7.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_8.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_9.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_10.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_11.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_12.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_13.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_14.png">
+<meta property="og:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_15.png">
+<meta property="og:updated_time" content="2017-06-07T13:33:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="sqlite-事务操作">
+<meta name="twitter:description" content="内存结构">
+<meta name="twitter:image" content="https://kingofkingss.github.io/img/sqlite/2017-06-02-iOS-sqlite_1.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -149,74 +170,164 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-DataBase/Sqlite/2017-06-02-iOS-Sqlite" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/01/DataStructure/2017-07-01-DataStructure/" class="archive-article-date">
-  	<time datetime="2017-07-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/DataStructure/2017-07-01-DataStructure/">线性表- 顺序存储</a>
+    <h1 class="article-title" itemprop="name">
+      sqlite-事务操作
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/DataBase/Sqlite/2017-06-02-iOS-Sqlite/" class="archive-article-date">
+        
+        <a href="/2017/06/02/DataBase/Sqlite/2017-06-02-iOS-Sqlite/" class="archive-article-date">
   	<time datetime="2017-06-02T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/DataBase/Sqlite/2017-06-02-iOS-Sqlite/">sqlite-事务操作</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/sqlite/2017-06-02-iOS-sqlite_1.jpeg" alt=""></p>
+<h1 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h1><a id="more"></a>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_2.png" alt=""></p>
+<blockquote>
+<p>user Space: 用户缓存页，用于用户对数据库的更新操作<br>OS Buffers: 数据库缓存页，用于用户对数据库的查询操作<br>Disk: 磁盘数据页: 用于数据的持久化</p>
+</blockquote>
+<h1 id="事务执行过程"><a href="#事务执行过程" class="headerlink" title="事务执行过程"></a>事务执行过程</h1><h2 id="开启事务"><a href="#开启事务" class="headerlink" title="开启事务"></a>开启事务</h2><blockquote>
+<p>可以定义开启事务的方式: default, immediate, exclusive。<br>如果访问数据库的操作是只读，使用default。<br>如果访问数据库的操作是写操作，使用immediate，防止数据库死锁。</p>
+</blockquote>
+<h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><blockquote>
+<ol>
+<li>首先解析SQL语句，利用sqlite_master表，验证SQL语句的合法性，sqlite_master表保存各种文件的定义，表的定义、索引定义、视图定义、触发器定义。</li>
+<li>事务获取pending锁，之后获取shared锁，对OS Buffer空间进行加锁。</li>
+<li>将想要的数据从OS Buffer读取到user Space中。</li>
+<li>程序通过user Space区域，获得想要的数据。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_3.png" alt=""></p>
+<h2 id="获取保留锁"><a href="#获取保留锁" class="headerlink" title="获取保留锁"></a>获取保留锁</h2><blockquote>
+<ol>
+<li>创建保留锁对OS Buffer空间进行加锁。</li>
+<li>此时OS Buffer空间只能有一个保留锁，多个共享锁。</li>
+<li>保留锁标识数据库文件将在未来某一时段需要修改。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_4.png" alt=""></p>
+<h2 id="创建回滚日志"><a href="#创建回滚日志" class="headerlink" title="创建回滚日志"></a>创建回滚日志</h2><blockquote>
+<ol>
+<li>创建回滚日志，并保存到OS BUffer中，回滚日志并没有真正的写入内存中。</li>
+<li>将user Space中需要修改的数据页保存到回滚日志中。</li>
+<li>回滚日志中保存着数据库文件的原始大小(图中绿色区域)，保存着修改的数据库页和数据库页码。</li>
+<li>当用户在创建一个新文件时，实际上是在内存中创建了新文件，并没有刷到磁盘中，直到操作系统有空闲时间时，将其刷到磁盘中，这也是为啥程序中的I/O操作比实际磁盘中的I/O操作快。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_5.png" alt=""></p>
+<h2 id="修改用户空间的数据"><a href="#修改用户空间的数据" class="headerlink" title="修改用户空间的数据"></a>修改用户空间的数据</h2><blockquote>
+<ol>
+<li>所有的修改都是发生在user Space，为了更好的支持并发。</li>
+<li>对读入到user Space中的数据库页，进行修改。</li>
+<li>每一个数据库连接都有自己的user Space，这样就可以实现读写并发的情况，即数据库连接A修改数据时，数据库连接B还可以从OS Buffer中读取原始的数据。user Space 与 OS Buffer分离，这样修改后的数据不会污染原始的数据。</li>
+<li>当前数据库连接可看到自己修改的数据，只能当前数据库连接可看，其它数据库看不到(通过设置隔离级别，可见)。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_6.png" alt=""></p>
+<h2 id="将回滚日志刷到磁盘中"><a href="#将回滚日志刷到磁盘中" class="headerlink" title="将回滚日志刷到磁盘中"></a>将回滚日志刷到磁盘中</h2><blockquote>
+<ol>
+<li>将回滚日志刷到磁盘中，保证程序崩溃、掉电时，可以通过回滚日志找回原来的数据。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_7.png" alt=""></p>
+<h2 id="获取排他锁"><a href="#获取排他锁" class="headerlink" title="获取排他锁"></a>获取排他锁</h2><blockquote>
+<ol>
+<li>获取pending锁，该锁同一时刻只能有一个数据库连接可以持有，阻止新的数据库连接获取share锁，因为只要数据库文件被加了share锁，就不能进行修改，这样写操作有可能永远执行不了，所以使用pending锁，所有数据库连接想访问(读、写)数据库都必须首先获取pending锁，这样share锁可以在有限的时间内被时方法。</li>
+<li>当OS Buffer中的share锁释放后，获取排他锁。为了之后将user Space中的内容覆盖到OS Buffer中。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_8.png" alt=""></p>
+<h2 id="修改OS-Buffer"><a href="#修改OS-Buffer" class="headerlink" title="修改OS Buffer"></a>修改OS Buffer</h2><blockquote>
+<ol>
+<li>获取exclusive锁之后，同一时间内只有自己在访问数据库，将user Space中的数据页覆盖到OS Buffer中。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_9.png" alt=""></p>
+<h2 id="修改Disk"><a href="#修改Disk" class="headerlink" title="修改Disk"></a>修改Disk</h2><blockquote>
+<ol>
+<li>将OS Buffer中的数据刷到Disk中，该过程占据commit的大部分时间，因为写入磁盘数据会很慢。</li>
+</ol>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_10.png" alt=""></p>
+</blockquote>
+<h2 id="删除回滚日志"><a href="#删除回滚日志" class="headerlink" title="删除回滚日志"></a>删除回滚日志</h2><blockquote>
+<ol>
+<li>当修改完Disk后，将Disk中回滚日志删除，将OS Buffer中回滚日志删除。</li>
+<li>sqlite中，每次创建数据库连接时，都会判断数据库是否有回滚日志，如果有就认为数据不完整，对数据进行回滚，如果不存在，认为数据完整，不对数据库进行优化。</li>
+<li>sqlite对删除回滚日志进行了优化，SQLite可以配置为将日志文件截断为零字节长度，或用零覆盖日志文件头，如果全部删除耗时太长，修改回滚日志中的头标题中某个字节，只有让其格式错误使其无效。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_11.png" alt=""></p>
+<h2 id="释放锁"><a href="#释放锁" class="headerlink" title="释放锁"></a>释放锁</h2><blockquote>
+<ol>
+<li>当操作完数据库时，释放所有的锁。</li>
+<li>新版的sqlite不会清空user Space，方便用户重用数据，因为从user Space中读取数据比从OS Buffer的成本低。</li>
+<li>数据库的第一页中有所有数据库文件的计数器(版本号)，当数据发生变化时，该数据文件的计数器加1，sqlite在重用user Space时，先检查数据库第一页中的计数器的变化，如果变化了清除user Space中的数据，并重新读取数据到user Space中，如果没有变化，直接重用当前user Space中的数据，这样提高性能。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_12.png" alt=""></p>
+<h2 id="发生故障"><a href="#发生故障" class="headerlink" title="发生故障"></a>发生故障</h2><blockquote>
+<ol>
+<li>故障出现在事务持有exclusive锁，进行数据写入磁盘操作时，突然断电，导致数据不完整现象。此时能走的这一步证明回滚日志已经完整的写入到磁盘中。利用回滚日志恢复数据。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_13.png" alt=""></p>
+<h2 id="热日志"><a href="#热日志" class="headerlink" title="热日志"></a>热日志</h2><blockquote>
+<ol>
+<li>每一个在建立数据库连接时，都会判断是否存在回滚日志。</li>
+</ol>
+</blockquote>
+<h2 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h2><blockquote>
+<ol>
+<li>建立数据库连击前，首先检测回滚日志，如果有回滚日志时，获取exclusive锁，保证不会存在多个数据库连接进行数据恢复动作。</li>
+<li>将热日志移到OS Buffer 中，重新将原始数据从OS Buffer中写入到磁盘。</li>
+<li>通过回滚日志恢复数据，回滚日志头保存数据库文件的大小，通过它可以恢复到原始的数据库文件大小。</li>
+</ol>
+</blockquote>
+<p><img src="/img/sqlite/2017-06-02-iOS-sqlite_14.png" alt=""></p>
+<h2 id="删除热日志"><a href="#删除热日志" class="headerlink" title="删除热日志"></a>删除热日志</h2><blockquote>
+<ol>
+<li>数据库恢复后，将OS Buffer和磁盘中的回滚日志删除。<br><img src="/img/sqlite/2017-06-02-iOS-sqlite_15.png" alt=""></li>
+</ol>
+</blockquote>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -228,437 +339,98 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/06/02/DataBase/Sqlite/2017-06-02-iOS-Sqlite/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/" class="archive-article-date">
-  	<time datetime="2017-06-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-01</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/">sqlite-事务基础</a>
-    </h1>
+    <a href="/2017/07/01/DataStructure/2017-07-01-DataStructure/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          线性表- 顺序存储
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">sqlite-事务基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sqlite基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/10/hello/" class="archive-article-date">
-  	<time datetime="2017-05-10T06:15:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/10/hello/">hello world</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello World</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/" class="archive-article-date">
-  	<time datetime="2017-05-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/">lianzi-项目框架初始化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">项目-联子</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/">Runtime－实现KVO</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/">Runtime－多继承的实现</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/06/iOS/Runtime/2017-02-07-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/06/iOS/Runtime/2017-02-07-iOS-Runtime/">Runtime－hook技术</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/">Runtime－关联对象原理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/">Runtime－消息发送、消息转发</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/04/iOS/Runtime/2017-02-03-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/04/iOS/Runtime/2017-02-03-iOS-Runtime/">实践Runtime－Model转SQL</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/02/iOS/Runtime/2017-02-02-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-02T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/02/iOS/Runtime/2017-02-02-iOS-Runtime/">Runtime－方法解释</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/">OC中实例对象、类对象、元对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -681,8 +453,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
