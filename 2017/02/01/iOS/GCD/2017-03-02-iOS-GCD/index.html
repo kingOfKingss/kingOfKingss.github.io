@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://kingofkingss.github.io">
-  <title>hello world | Hexo</title>
+  <title>GCD-基本函数 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hello world !!">
-<meta name="keywords" content="hello World">
+  <meta name="description" content="OC对象的结构 dispatch_syn(), 保证执行顺序，例如在多线程修改数据时，可以使用该方式保障多线程不会在同一时刻访问，导致数据不正确。 三个函数保证程序不退出：dispath_main();UIApplicationMain(); - iOSNSApplicationMain(); - mac dispatch_queue_t dispatch_get_main_queue(void)">
+<meta name="keywords" content="iOS-GCD">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello world">
-<meta property="og:url" content="https://kingofkingss.github.io/2017/05/10/hello/index.html">
+<meta property="og:title" content="GCD-基本函数">
+<meta property="og:url" content="https://kingofkingss.github.io/2017/02/01/iOS/GCD/2017-03-02-iOS-GCD/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="hello world !!">
-<meta property="og:updated_time" content="2017-05-11T02:05:48.000Z">
+<meta property="og:description" content="OC对象的结构 dispatch_syn(), 保证执行顺序，例如在多线程修改数据时，可以使用该方式保障多线程不会在同一时刻访问，导致数据不正确。 三个函数保证程序不退出：dispath_main();UIApplicationMain(); - iOSNSApplicationMain(); - mac dispatch_queue_t dispatch_get_main_queue(void)">
+<meta property="og:image" content="https://kingofkingss.github.io/img/back.jpeg">
+<meta property="og:updated_time" content="2017-06-15T02:59:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello world">
-<meta name="twitter:description" content="hello world !!">
+<meta name="twitter:title" content="GCD-基本函数">
+<meta name="twitter:description" content="OC对象的结构 dispatch_syn(), 保证执行顺序，例如在多线程修改数据时，可以使用该方式保障多线程不会在同一时刻访问，导致数据不正确。 三个函数保证程序不退出：dispath_main();UIApplicationMain(); - iOSNSApplicationMain(); - mac dispatch_queue_t dispatch_get_main_queue(void)">
+<meta name="twitter:image" content="https://kingofkingss.github.io/img/back.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -158,27 +160,53 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-iOS/GCD/2017-03-02-iOS-GCD" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hello world
+      GCD-基本函数
     </h1>
   
 
         
-        <a href="/2017/05/10/hello/" class="archive-article-date">
-  	<time datetime="2017-05-10T06:15:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
+        <a href="/2017/02/01/iOS/GCD/2017-03-02-iOS-GCD/" class="archive-article-date">
+  	<time datetime="2017-02-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>hello world !!</p>
+        <h2 id="OC对象的结构"><a href="#OC对象的结构" class="headerlink" title="OC对象的结构"></a>OC对象的结构</h2><p><img src="/img/back.jpeg" alt=""></p>
+<p>dispatch_syn(), 保证执行顺序，例如在多线程修改数据时，可以使用该方式保障多线程不会在同一时刻访问，导致数据不正确。</p>
+<p>三个函数保证程序不退出：<br>dispath_main();<br>UIApplicationMain(); - iOS<br>NSApplicationMain(); - mac</p>
+<p>dispatch_queue_t dispatch_get_main_queue(void);</p>
+<p>void dispatch_set_target_queue( dispatch_object_t object, dispatch_queue_t queue);</p>
+<ol>
+<li>设置队列的优先级，</li>
+<li>将任务分解到不同的串行队列中，保证执行顺序。</li>
+<li>参数1:需要修改优先级的对象，参数2:参照物队列。</li>
+</ol>
+<blockquote>
+<p>如果多个串行队列(A队列集合)参照一个串行队列(B队列)时:</p>
+<ol>
+<li>A队列集合与B队列所用的线程为同一个。</li>
+<li>如果A队列集合中的某个队列休眠时，其它队列中的任务照常执行。</li>
+<li>如果B队列休眠时，A队列集合中的所有任务都不能执行了。</li>
+<li>多个队列中的任务，会按照添加到任意队列中的顺序执行。</li>
+</ol>
+<p>如果多个串行队列(A队列集合)参照一个并发队列(B队列)时:</p>
+<ol>
+<li>多个队列中的任务，会随机执行，没有固定的顺序。</li>
+<li>可以参照并发对列来设置串行队列的优先级。</li>
+</ol>
+</blockquote>
+<p>多线程问题：<br>内存的消耗；<br>资源竞争；</p>
+<p>从iOS6开始，GCD开始支持ARC管理</p>
+<p>dispatch_group原理：<br>每一个添加到group中的block都会持有该group对象，计数器+1，执行完毕时，-1 ?</p>
 
       
 
@@ -213,7 +241,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello World</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">iOS-GCD</a>
         		</li>
       		
 		</ul>
@@ -269,7 +297,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/05/10/hello/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/02/01/iOS/GCD/2017-03-02-iOS-GCD/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +311,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          sqlite-事务基础
+          OC中实例对象、类对象、元对象
         
       </div>
     </a>
   
   
-    <a href="/2017/05/01/Project/lianzi/2017-05-02-iOS-lianzi/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">lianzi-证书基础知识介绍</div>
+    <a href="/2017/02/01/iOS/GCD/2017-03-01-iOS-GCD/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GCD-基本函数</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://kingofkingss.github.io">
-  <title>hello world | Hexo</title>
+  <title>lianzi-苹果证书 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hello world !!">
-<meta name="keywords" content="hello World">
+  <meta name="description" content="真机测试条件 1、需要一对公钥、私钥(用来对代码进行签名)2、需要开发证书、生产证书(对代码签名进行解密)3、需要APP ID(创建一个App的唯一ID，用来在手机上唯一标识一个App)4、需要Device(配置设备，让app有权限在该手机上运行)5、需要描述文件(包含证书、App ID、Device、授权文件等信息的集合文件)   公钥私钥获取  在使用钥匙串访问时，我们经常选 “从证书颁发机构">
+<meta name="keywords" content="项目-联子">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello world">
-<meta property="og:url" content="https://kingofkingss.github.io/2017/05/10/hello/index.html">
+<meta property="og:title" content="lianzi-苹果证书">
+<meta property="og:url" content="https://kingofkingss.github.io/2017/05/01/Project/lianzi/2017-05-03-iOS-lianzi/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="hello world !!">
-<meta property="og:updated_time" content="2017-05-11T02:05:48.000Z">
+<meta property="og:description" content="真机测试条件 1、需要一对公钥、私钥(用来对代码进行签名)2、需要开发证书、生产证书(对代码签名进行解密)3、需要APP ID(创建一个App的唯一ID，用来在手机上唯一标识一个App)4、需要Device(配置设备，让app有权限在该手机上运行)5、需要描述文件(包含证书、App ID、Device、授权文件等信息的集合文件)   公钥私钥获取  在使用钥匙串访问时，我们经常选 “从证书颁发机构">
+<meta property="og:updated_time" content="2017-08-18T06:04:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello world">
-<meta name="twitter:description" content="hello world !!">
+<meta name="twitter:title" content="lianzi-苹果证书">
+<meta name="twitter:description" content="真机测试条件 1、需要一对公钥、私钥(用来对代码进行签名)2、需要开发证书、生产证书(对代码签名进行解密)3、需要APP ID(创建一个App的唯一ID，用来在手机上唯一标识一个App)4、需要Device(配置设备，让app有权限在该手机上运行)5、需要描述文件(包含证书、App ID、Device、授权文件等信息的集合文件)   公钥私钥获取  在使用钥匙串访问时，我们经常选 “从证书颁发机构">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -158,27 +158,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Project/lianzi/2017-05-03-iOS-lianzi" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hello world
+      lianzi-苹果证书
     </h1>
   
 
         
-        <a href="/2017/05/10/hello/" class="archive-article-date">
-  	<time datetime="2017-05-10T06:15:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
+        <a href="/2017/05/01/Project/lianzi/2017-05-03-iOS-lianzi/" class="archive-article-date">
+  	<time datetime="2017-05-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>hello world !!</p>
+        <h2 id="真机测试条件"><a href="#真机测试条件" class="headerlink" title="真机测试条件"></a>真机测试条件</h2><blockquote>
+<p>1、需要一对公钥、私钥(用来对代码进行签名)<br>2、需要开发证书、生产证书(对代码签名进行解密)<br>3、需要APP ID(创建一个App的唯一ID，用来在手机上唯一标识一个App)<br>4、需要Device(配置设备，让app有权限在该手机上运行)<br>5、需要描述文件(包含证书、App ID、Device、授权文件等信息的集合文件)</p>
+</blockquote>
+<ol>
+<li><p>公钥私钥获取</p>
+<blockquote>
+<p>在使用钥匙串访问时，我们经常选 “从证书颁发机构请求证书” 此时就是在本机中生成一个公钥和私钥。<br>它的作用就是对App进行代码签名，保证安装到手机中的app是没有被篡改的、是合法的。</p>
+</blockquote>
+</li>
+<li><p>APP ID</p>
+<blockquote>
+<p>标识一个苹果应用的身份ID，苹果在安装手机时，如何保证不会安装重复的App应用，就是通过App ID(或者叫做BundleID)。其中定义了该App所使用服务。</p>
+</blockquote>
+</li>
+<li><p>Device</p>
+<blockquote>
+<p>苹果设备，在真机调试时，因为你的App没有经过AppStore的审核，众所周知没有被审核的App是不能安装到苹果设备上的，如果想要安装的，第一越狱，第二向苹果申请让某个苹果设备能够安装该App。</p>
+</blockquote>
+</li>
+<li><p>开发证书和生产证书</p>
+<blockquote>
+<p>保存了用户的公钥和苹果CA对该证书的签名。该证书的作用就是对代码签名进行解密，然后与手机对该App代码生成的代码签名进行比对，如果一致就是合法的、并且是没有被人篡改的。</p>
+</blockquote>
+</li>
+<li><p>描述文件</p>
+<blockquote>
+<p>该文件是会被打包进App中，并发送到手机中的，其中包含了证书、App ID、Device、授权文件等信息的集合文件。使用这一个文件就能验证app的合法性。即就是上述几个东西包装进来。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="真机测试"><a href="#真机测试" class="headerlink" title="真机测试"></a>真机测试</h2><ol>
+<li>Xcode中的Code Sign选项指定的代码签名证书，对代码进行签名。</li>
+<li>app被运行时，首先首先检查描述文件中的信息是否合法(AppID是否与BundleID对应，code Sign是否指定了代码签名的私钥)。</li>
+<li>检测开发证书是否合法。</li>
+<li>使用开发证书对加密的代码签名进行解密，与手机自己生成代码签名进行比对是否一致。</li>
+</ol>
+<p>描述文件的保存路径：<br>~/Library/MobileDevice/Provisioning Profiles</p>
 
       
 
@@ -213,7 +249,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello World</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">项目-联子</a>
         		</li>
       		
 		</ul>
@@ -269,7 +305,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/05/10/hello/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/05/01/Project/lianzi/2017-05-03-iOS-lianzi/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +319,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/01/Project/lianzi/2017-05-02-iOS-lianzi/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          sqlite-事务基础
+          lianzi-证书基础知识介绍
         
       </div>
     </a>
   
   
-    <a href="/2017/05/01/Project/lianzi/2017-05-02-iOS-lianzi/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">lianzi-证书基础知识介绍</div>
+    <a href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">lianzi-项目框架初始化</div>
       <i class="icon-circle-right"></i>
     </a>
   

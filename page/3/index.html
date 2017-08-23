@@ -48,6 +48,8 @@
 		  <h1 class="header-author"><a href="/">Running</a></h1>
 		</hgroup>
 		
+		<p class="header-subtitle">世界是简单的，只不过你想复杂了</p>
+		
 
 		<nav class="header-menu">
 			<ul>
@@ -106,6 +108,8 @@
 			  <h1 class="header-author js-header-author">Running</h1>
 			</hgroup>
 			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>世界是简单的，只不过你想复杂了<i class="icon icon-quo-right"></i></p>
+			
 			
 			
 				
@@ -150,6 +154,195 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-iOS/Runtime/2017-02-08-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/">Runtime－多继承的实现</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/" class="archive-article-date">
+  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用RunTime转发机制实现多继承</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-iOS/Runtime/2017-02-05-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/">Runtime－关联对象原理</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/" class="archive-article-date">
+  	<time datetime="2017-02-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OC-RunTime关联对象"><a href="#OC-RunTime关联对象" class="headerlink" title="OC RunTime关联对象"></a>OC RunTime关联对象</h1><h2 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h2><ol>
+<li>void objc_setAssociatedObject(id object, void *key, id value, objc_AssociationPolicy policy)</li>
+<li>id objc_getAssociatedObject(id object, void *key)</li>
+<li>void objc_removeAssociatedObjects(id object)</li>
+</ol>
+        
+          <a class="article-more-a" href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-iOS/Runtime/2017-02-04-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/">Runtime－消息发送、消息转发</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/" class="archive-article-date">
+  	<time datetime="2017-02-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OC-RunTime消息转发机制"><a href="#OC-RunTime消息转发机制" class="headerlink" title="OC RunTime消息转发机制"></a>OC RunTime消息转发机制</h1><ol>
+<li>Method resolution – 方法补救</li>
+<li>Fast forwarding – 快速转发</li>
+<li>Normal forwarding – 真正的转发</li>
+</ol>
+        
+          <a class="article-more-a" href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
   
     <article id="post-iOS/Runtime/2017-02-03-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -275,72 +468,9 @@
 
 
   
-    <article id="post-iOS/Runtime/2017-02-01-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/">OC中实例对象、类对象、元对象</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="OC对象的结构"><a href="#OC对象的结构" class="headerlink" title="OC对象的结构"></a>OC对象的结构</h2><p><img src="/img/iOS/2017-02-01-iOS-Runtime_1.png" alt=""></p>
-<p><strong>上图讲解(虚线: isa，实线: superClass)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">上图中有三种类型的对象，实例对象、类对象、元对象。</div><div class="line">1、实例对象：</div><div class="line">   它是我们编程常用的东西，其中保存着程序中产生的数据，在内存中可以存在多个，在OC中实例对象使用结构体表示。</div><div class="line">它是由类对象创建出来的，类对象中保存了实例对象的定义，包括成员变量、实例方法、遵循的协议。</div><div class="line"></div><div class="line">2、类对象：</div><div class="line">   它是我们编程时用来创造实例对象的东西，相当于现实生活中的设计图纸，其中保存着构造实例对象的成员变量定义</div><div class="line">(类型、名称)，实例方法定义、遵循的协议、谁的子类。类对象与实例对象不同的是类方法创建的实际为程序运行时由系</div><div class="line">统来生成，并且在内存中只有一份，而实例对象是由程序员创建，并且我们可以控制实例对象的生命周期。</div><div class="line"></div><div class="line">3、元类对象：</div><div class="line">    它是我们编程时极少接触的东西，有可能都不知道它的存在，它是用来创造类对象的东西，其中保存着构造类对象的类方法的定义、类方法的父类定义。</div><div class="line">    </div><div class="line">note：</div><div class="line">    1&gt;类对象和元类对象中有isa指针(指向元类)，super指针(指向父类类对象)。</div><div class="line">    2&gt;元类对象的isa指针指向根元类，即由根元类创建的元类。根元类的isa指针指向自己。</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -434,15 +564,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS-Runtime基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sqlite基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">hello World</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -450,15 +576,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">project:lianzi</a>
+                <a href="javascript:void(0)" class="js-tag color4">sqlite基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">project-lianzi</a>
+                <a href="javascript:void(0)" class="js-tag color3">iOS-GCD</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color2">iOS-基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS-Runtime基础</a>
               </li>
             
             <div class="clearfix"></div>

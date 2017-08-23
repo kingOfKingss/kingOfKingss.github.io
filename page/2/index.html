@@ -48,6 +48,8 @@
 		  <h1 class="header-author"><a href="/">Running</a></h1>
 		</hgroup>
 		
+		<p class="header-subtitle">世界是简单的，只不过你想复杂了</p>
+		
 
 		<nav class="header-menu">
 			<ul>
@@ -106,6 +108,8 @@
 			  <h1 class="header-author js-header-author">Running</h1>
 			</hgroup>
 			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>世界是简单的，只不过你想复杂了<i class="icon icon-quo-right"></i></p>
+			
 			
 			
 				
@@ -151,30 +155,128 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-iOS/Runtime/2017-02-06-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Project/lianzi/2017-05-02-iOS-lianzi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/">Runtime－实现KVO</a>
+      <a class="article-title" href="/2017/05/01/Project/lianzi/2017-05-02-iOS-lianzi/">lianzi-证书基础知识介绍</a>
     </h1>
   
 
         
-        <a href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
+        <a href="/2017/05/01/Project/lianzi/2017-05-02-iOS-lianzi/" class="archive-article-date">
+  	<time datetime="2017-05-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="OC-RunTimeKVO原理"><a href="#OC-RunTimeKVO原理" class="headerlink" title="OC RunTimeKVO原理"></a>OC RunTimeKVO原理</h1><p><img src="/img/iOS/2017-02-06-iOS-Runtime_1.png" alt=""></p>
-        
-          <a class="article-more-a" href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/#more">more >></a>
-        
+        <p>#证书常识</p>
+<p>##信息传输过程中出现的问题</p>
+<blockquote>
+<p>信息被人窃取并偷看信息<br>信息被人修改<br>发信人被人冒充</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1、传输信息需要通过网络，有人可以通过网络劫去到信息，从而知道其中的情报。(将计就计)</div><div class="line">2、劫去到情报后，对信息进行修改后，发给接收情报的人，从而给对方发送错误情报。(偷梁换柱)</div><div class="line">3、敌人可以冒充发信者给接收方发送消息，从而将假情报发送给对方或者降低接收方对真发送方的信任度(移花接木)。</div></pre></td></tr></table></figure>
+<p>##对问题的解决办法</p>
+<blockquote>
+<p>对信息进行加密。<br>检验信息是否被篡改<br>检验没有人冒充</p>
+</blockquote>
+<ol>
+<li><p>如何验证数据没有被人篡改？</p>
+<blockquote>
+<p>对需要发送的数据进行签名，接收人通过签名来判断信息是否被人修改了。</p>
+</blockquote>
+</li>
+<li><p>如何保证数据签名没有人被人修改？</p>
+<blockquote>
+<p>对数据签名进行加密操作，让中间人获得不到真正的数据签名。</p>
+</blockquote>
+</li>
+<li><p>如何验证发送人没有被人冒充，并防止它抵赖？</p>
+<blockquote>
+<p>向有关的机构申请数字证书，发送信息时附带数字证书，接收方通过数字证书来确定，发送方没有被人冒充。</p>
+</blockquote>
+</li>
+</ol>
+<p>##数字签名介绍</p>
+<ol>
+<li><p>什么是数字签名?</p>
+<blockquote>
+<p>对需要发送的信息进行一次不可逆的加密操作，生成一串字符；<br>加密操作(哈希算法)，要保证两点，第一是对数据进行加密后，任何人都不能解密，即不可逆的加密；<br>第二是信息不同加密后得到的字符串也是不相同，即使数据中修改了一个比特位，加密后的字符串也不能相同。</p>
+</blockquote>
+</li>
+<li><p>如何实现数字签名？</p>
+<blockquote>
+<p>只要保证上面所说的两个条件的算法，都可以进行数字签名。<br>现在主流的数字签名算法：MD5算法、SHA512算法、SHA256算法。</p>
+</blockquote>
+</li>
+<li><p>数字签名的使用?</p>
+<blockquote>
+<p>对数据进行数据签名后生成一串字符串A，将数据+字符串A传给接收方，接收方对接送的数据再进行一次数字签名获得字符串B，比较字符串A和字符串B是否一样，如果一样证明数据没有被人篡改。(注意发送方和接收方必须使用同一个数据签名算法)</p>
+</blockquote>
+</li>
+<li><p>如何保证数字签名没有中途被人修改？</p>
+<blockquote>
+<p>发送方发送数据时，使用对方的公钥对数据信息加密，使用自己的私钥对数据签名进行加密，这样，中途就算有人获取加密后的数据，没有对方的私钥无法解开数据，就算解开了数字签名，数字签名不可逆，获取不到真实的数据，就算替换了数据后，重新生成数字签名，但是没有发送方的私钥，如何对数字签名进行加密，因为接收方会使用发送方的公钥对数字签名进行解密，如果数据和数字签名不匹配，接收方是不会信任的。</p>
+<p>所以对数字签名进行私钥加密，并让接收方必须使用公钥对数字签名进行解密，才能得到数字签名的方式，保证中途数字签名的安全。不会有人对其进行修改或者替换。如果想要接收方相信数据的真实性，必须获取到发送方的私钥。</p>
+</blockquote>
+</li>
+</ol>
+<p>##数字证书介绍</p>
+<ol>
+<li><p>数字证书是什么鬼？</p>
+<blockquote>
+<p>数字证书是有权威证书授权机构(CA)给你颁发的 “证明你的身份” 的凭证。相当于身份证。</p>
+</blockquote>
+</li>
+<li><p>证书类型</p>
+<blockquote>
+<p>1、证明网络中人的身份真实性的证书。<br>2、证明证书的权威性的证书</p>
+</blockquote>
+</li>
+<li><p>数字证书(证明人的证书)中的内容是啥？</p>
+<blockquote>
+<p>用户的公钥<br>用户的基本信息<br>证书的有效期<br>证书的颁发机构<br>对证书真实性的签名(上级证书对该证书的签名)</p>
+</blockquote>
+</li>
+<li><p>数字证书(证明证书的证书)中的内容是啥？</p>
+<blockquote>
+<p>颁发该证书对应机构的公钥<br>证书的有效期<br>证书颁发机构<br>对证书真实性的签名(上级证书对该证书的签名)</p>
+</blockquote>
+</li>
+<li><p>如何保证证书的权威性？</p>
+<blockquote>
+<p>从上面可以看出，给用户颁发的证书的权威性也需要它的颁发机构的上级机构去证明。<br>这样就导致一个证书信任链条，最终的终点就是根证书。<br>计算机拿到证书一次次向上递归的查找计算机信任的对应该证书的上级证书，如果找到，从证书中获得公钥，对拿到的证书进行数字签名验证。</p>
+</blockquote>
+</li>
+<li><p>根证书是啥</p>
+<blockquote>
+<p>根证书是所有信任的基础，如果根证书都不被信任，那么它颁发的所有子证书都不会被信任。<br>根证书不需要要进行验证(用不可逆算法对自己的公钥进行数字签名，再用自己私钥对数字签名进行加密，即自己给自己签名)，需要计算机强制信任，如果你信任了它，根证书颁发的所有子证书，你都会信任的。所以如果该CA机构是一个被全世界人信任的机构，那么它的根证书你可以安装，否则还是别安装了。我们所用的操作系统会默认的给你添加被全世界人信任的CA机构的根证书。</p>
+<p>下图描述的就是根证书和子证书之间的关系。<br><img src="/img/iOS/lianzi_5_02.png" alt=""></p>
+</blockquote>
+</li>
+</ol>
+<ol>
+<li>如何防止一个人在网络中对自己发出的信息进行抵赖？<blockquote>
+<p>首先向我发送信息可以，请给我你的证书，没有证书免谈，我怎么知道你是不是冒充的，我没有火眼金睛。</p>
+<p>只要你给我发送信息时附带上你的证书时，我就会保留住，如果你抵赖时，对不起我接收到了你发来的信息中有数字签名+数字证书，你还想抵赖，fack you。</p>
+<p>如果你发送信息时附带别人的证书，对不起你发送的数字签名我使用证书上的公钥解出来后与我生成的数字签名不一致，你是无效信息。</p>
+<p>如果发送信息时，附带上自己的证书，但证书中的公钥替换成别人的了，对不起我使用你的证书的上级证书中公钥对你证书中的签名进行解密，然后我自己又对你的证书做了签名，发现签名不匹配，你的证书时被篡改了。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="发送信息到接收方验证的过程"><a href="#发送信息到接收方验证的过程" class="headerlink" title="发送信息到接收方验证的过程"></a>发送信息到接收方验证的过程</h2><blockquote>
+<p>发送数据之前该用户向有关机构(CA机构)申请证明用户的身份，该机构会颁发一个数字证书给用户。<br>使用哈希算法对数据进行取样，生成数据的摘要(数据签名)。<br>使用自己的私钥对数据摘要进行加密(防止数据签名被人修改)<br>使用对方的公钥对数据进行加密。<br>将加密数据+签名+数字证书发送给对方<br>对方首先验证发送方数字证书的合法性，如果没问题，进行下一步。<br>对方使用自己的私钥对加密数据进行解密获取到解密后数据<br>对方对解密后数据，也进行一次哈希算法的取样，生成数据摘要1。<br>使用对方的公钥对数据签名进行解密，获取到里面的数据摘要2。<br>比较数据摘要1和数据摘要2是否一样，如果一样就证明两点。<br>1、数据是完整的，并且中途没有被人修改过。<br>2、数据是该公钥对应的人发送过来的。<br>如果不匹配，对方发送的数据就是虚假数据，或者说是垃圾数据</p>
+<h2 id="数据传输的体系中最重要的一环"><a href="#数据传输的体系中最重要的一环" class="headerlink" title="数据传输的体系中最重要的一环"></a>数据传输的体系中最重要的一环</h2><p>手中的私钥不能泄漏，它是所有信息交互的基础，如果你的私钥被人破解，那么谁都可以对你接收到的信息进行破译，并冒充你发送信息给你的好友。</p>
+<p>加密解密时使用的算法必须一致。双方不能再进行数据交换时不能使用不同的算法对数据进行处理，否则一定是不正确的，即发送方使用RSA算法生成公钥私钥，接收方在解密时需要使用RSA算法进行解密。即保证加密过程和解密过程使用相同的方法。</p>
+<p>生成数据签名时，双方必须使用同一个算法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">note:</div><div class="line">你可以认为使用不可逆算法对数据加密后生成的一串字符串，再使用私钥对字符串进行加密后得到的数据为</div><div class="line">数字签名，符合逻辑，使用私钥加密后才可以称为签名(没有人的参与，数据的加密只是加密吧了，私钥代</div><div class="line">表一个人的身份)。</div></pre></td></tr></table></figure>
+
       
 
       
@@ -187,7 +289,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">项目-联子</a>
         		</li>
       		
 		</ul>
@@ -197,7 +299,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/01/Project/lianzi/2017-05-02-iOS-lianzi/">展开全文 >></a>
         </p>
       
 
@@ -212,27 +314,63 @@
 
 
   
-    <article id="post-iOS/Runtime/2017-02-08-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Project/lianzi/2017-05-03-iOS-lianzi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/">Runtime－多继承的实现</a>
+      <a class="article-title" href="/2017/05/01/Project/lianzi/2017-05-03-iOS-lianzi/">lianzi-苹果证书</a>
     </h1>
   
 
         
-        <a href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
+        <a href="/2017/05/01/Project/lianzi/2017-05-03-iOS-lianzi/" class="archive-article-date">
+  	<time datetime="2017-05-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用RunTime转发机制实现多继承</p>
+        <h2 id="真机测试条件"><a href="#真机测试条件" class="headerlink" title="真机测试条件"></a>真机测试条件</h2><blockquote>
+<p>1、需要一对公钥、私钥(用来对代码进行签名)<br>2、需要开发证书、生产证书(对代码签名进行解密)<br>3、需要APP ID(创建一个App的唯一ID，用来在手机上唯一标识一个App)<br>4、需要Device(配置设备，让app有权限在该手机上运行)<br>5、需要描述文件(包含证书、App ID、Device、授权文件等信息的集合文件)</p>
+</blockquote>
+<ol>
+<li><p>公钥私钥获取</p>
+<blockquote>
+<p>在使用钥匙串访问时，我们经常选 “从证书颁发机构请求证书” 此时就是在本机中生成一个公钥和私钥。<br>它的作用就是对App进行代码签名，保证安装到手机中的app是没有被篡改的、是合法的。</p>
+</blockquote>
+</li>
+<li><p>APP ID</p>
+<blockquote>
+<p>标识一个苹果应用的身份ID，苹果在安装手机时，如何保证不会安装重复的App应用，就是通过App ID(或者叫做BundleID)。其中定义了该App所使用服务。</p>
+</blockquote>
+</li>
+<li><p>Device</p>
+<blockquote>
+<p>苹果设备，在真机调试时，因为你的App没有经过AppStore的审核，众所周知没有被审核的App是不能安装到苹果设备上的，如果想要安装的，第一越狱，第二向苹果申请让某个苹果设备能够安装该App。</p>
+</blockquote>
+</li>
+<li><p>开发证书和生产证书</p>
+<blockquote>
+<p>保存了用户的公钥和苹果CA对该证书的签名。该证书的作用就是对代码签名进行解密，然后与手机对该App代码生成的代码签名进行比对，如果一致就是合法的、并且是没有被人篡改的。</p>
+</blockquote>
+</li>
+<li><p>描述文件</p>
+<blockquote>
+<p>该文件是会被打包进App中，并发送到手机中的，其中包含了证书、App ID、Device、授权文件等信息的集合文件。使用这一个文件就能验证app的合法性。即就是上述几个东西包装进来。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="真机测试"><a href="#真机测试" class="headerlink" title="真机测试"></a>真机测试</h2><ol>
+<li>Xcode中的Code Sign选项指定的代码签名证书，对代码进行签名。</li>
+<li>app被运行时，首先首先检查描述文件中的信息是否合法(AppID是否与BundleID对应，code Sign是否指定了代码签名的私钥)。</li>
+<li>检测开发证书是否合法。</li>
+<li>使用开发证书对加密的代码签名进行解密，与手机自己生成代码签名进行比对是否一致。</li>
+</ol>
+<p>描述文件的保存路径：<br>~/Library/MobileDevice/Provisioning Profiles</p>
 
       
 
@@ -246,7 +384,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">项目-联子</a>
         		</li>
       		
 		</ul>
@@ -256,7 +394,65 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/06/iOS/Runtime/2017-02-08-iOS-Runtime/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/01/Project/lianzi/2017-05-03-iOS-lianzi/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-Project/lianzi/2017-05-01-iOS-lianzi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/">lianzi-项目框架初始化</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/" class="archive-article-date">
+  	<time datetime="2017-05-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="联子架构初始化"><a href="#联子架构初始化" class="headerlink" title="联子架构初始化"></a>联子架构初始化</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">项目-联子</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/01/Project/lianzi/2017-05-01-iOS-lianzi/">展开全文 >></a>
         </p>
       
 
@@ -330,33 +526,29 @@
 
 
   
-    <article id="post-iOS/Runtime/2017-02-05-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-iOS/Runtime/2017-02-06-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/">Runtime－关联对象原理</a>
+      <a class="article-title" href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/">Runtime－实现KVO</a>
     </h1>
   
 
         
-        <a href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
+        <a href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/" class="archive-article-date">
+  	<time datetime="2017-02-06T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="OC-RunTime关联对象"><a href="#OC-RunTime关联对象" class="headerlink" title="OC RunTime关联对象"></a>OC RunTime关联对象</h1><h2 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h2><ol>
-<li>void objc_setAssociatedObject(id object, void *key, id value, objc_AssociationPolicy policy)</li>
-<li>id objc_getAssociatedObject(id object, void *key)</li>
-<li>void objc_removeAssociatedObjects(id object)</li>
-</ol>
+        <h1 id="OC-RunTimeKVO原理"><a href="#OC-RunTimeKVO原理" class="headerlink" title="OC RunTimeKVO原理"></a>OC RunTimeKVO原理</h1><p><img src="/img/iOS/2017-02-06-iOS-Runtime_1.png" alt=""></p>
         
-          <a class="article-more-a" href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/#more">more >></a>
         
       
 
@@ -380,72 +572,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/05/iOS/Runtime/2017-02-05-iOS-Runtime/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-iOS/Runtime/2017-02-04-iOS-Runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/">Runtime－消息发送、消息转发</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/" class="archive-article-date">
-  	<time datetime="2017-02-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="OC-RunTime消息转发机制"><a href="#OC-RunTime消息转发机制" class="headerlink" title="OC RunTime消息转发机制"></a>OC RunTime消息转发机制</h1><ol>
-<li>Method resolution – 方法补救</li>
-<li>Fast forwarding – 快速转发</li>
-<li>Normal forwarding – 真正的转发</li>
-</ol>
-        
-          <a class="article-more-a" href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS-Runtime基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/04/iOS/Runtime/2017-02-04-iOS-Runtime/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/06/iOS/Runtime/2017-02-06-iOS-Runtime/">展开全文 >></a>
         </p>
       
 
@@ -462,7 +589,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -556,15 +683,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS-Runtime基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sqlite基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">hello World</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,15 +695,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">project:lianzi</a>
+                <a href="javascript:void(0)" class="js-tag color4">sqlite基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">project-lianzi</a>
+                <a href="javascript:void(0)" class="js-tag color3">iOS-GCD</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color2">iOS-基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS-Runtime基础</a>
               </li>
             
             <div class="clearfix"></div>

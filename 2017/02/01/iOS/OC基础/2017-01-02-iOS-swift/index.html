@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://kingofkingss.github.io">
-  <title>hello world | Hexo</title>
+  <title>iOS-swift闭包 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hello world !!">
-<meta name="keywords" content="hello World">
+  <meta name="description" content="何为闭包 闭包：将一些代码封装起来，这些代码使用了一些不是自己定义的变量，这就是闭包。">
+<meta name="keywords" content="iOS-基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello world">
-<meta property="og:url" content="https://kingofkingss.github.io/2017/05/10/hello/index.html">
+<meta property="og:title" content="iOS-swift闭包">
+<meta property="og:url" content="https://kingofkingss.github.io/2017/02/01/iOS/OC基础/2017-01-02-iOS-swift/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="hello world !!">
-<meta property="og:updated_time" content="2017-05-11T02:05:48.000Z">
+<meta property="og:description" content="何为闭包 闭包：将一些代码封装起来，这些代码使用了一些不是自己定义的变量，这就是闭包。">
+<meta property="og:image" content="https://kingofkingss.github.io/img/iOS/2017-01-02-iOS-swift.png">
+<meta property="og:updated_time" content="2017-08-11T03:32:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello world">
-<meta name="twitter:description" content="hello world !!">
+<meta name="twitter:title" content="iOS-swift闭包">
+<meta name="twitter:description" content="何为闭包 闭包：将一些代码封装起来，这些代码使用了一些不是自己定义的变量，这就是闭包。">
+<meta name="twitter:image" content="https://kingofkingss.github.io/img/iOS/2017-01-02-iOS-swift.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -158,27 +160,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-iOS/OC基础/2017-01-02-iOS-swift" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hello world
+      iOS-swift闭包
     </h1>
   
 
         
-        <a href="/2017/05/10/hello/" class="archive-article-date">
-  	<time datetime="2017-05-10T06:15:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
+        <a href="/2017/02/01/iOS/OC基础/2017-01-02-iOS-swift/" class="archive-article-date">
+  	<time datetime="2017-02-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>hello world !!</p>
+        <p><img src="/img/iOS/2017-01-02-iOS-swift.png" alt=""></p>
+<h2 id="何为闭包"><a href="#何为闭包" class="headerlink" title="何为闭包"></a>何为闭包</h2><blockquote>
+<p>闭包：将一些代码封装起来，这些代码使用了一些不是自己定义的变量，这就是闭包。</p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">func fun1()&#123;</div><div class="line">    var i:Int = 12;</div><div class="line">    fun2()&#123;</div><div class="line">        var a:Int = 10;</div><div class="line">        print(&quot;\(a+i)&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">1、上面的代码中fun2就是闭包了，它将一些代码封装起来，并引用了fun1函数中定义的变量i。</div><div class="line">2、使用闭包，可以延长引用的局部变量的生命周期。只有闭包执行完成后引用的局部变量才会释放。</div><div class="line">3、闭包的实现，让我们在函数调用的时候可以传递代码了。</div><div class="line">4、虽然闭包好用，但是如果引用变量引用的不好，有可能造成内存的泄漏。</div></pre></td></tr></table></figure>
+<h2 id="普通闭包的写法"><a href="#普通闭包的写法" class="headerlink" title="普通闭包的写法"></a>普通闭包的写法</h2><blockquote>
+<p>swift中闭包的语法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&#123;(参数)-&gt;返回值 in 代码块&#125;;</div><div class="line">in：in的作用就是为了隔开闭包的参数、返回值与闭包的逻辑代码隔开。</div><div class="line"></div><div class="line">// 繁琐的写法</div><div class="line">let block1:(Int, String)-&gt;Bool = &#123;</div><div class="line">    (a:Int, b:String)-&gt;Bool in</div><div class="line">    let v = b+String(a);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 省略参数类型的写法</div><div class="line">let block1:(Int, String)-&gt;Bool = &#123; (a, b) -&gt;Bool in</div><div class="line">    let v = b+String(a);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 省略参数类型和括号的写法</div><div class="line">let block1:(Int, String)-&gt;Bool = &#123;</div><div class="line">    a, b -&gt;Bool in</div><div class="line">    let v = b+String(a);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 省略参数类型、括号、返回值类型的写法</div><div class="line">let block1:(Int, String)-&gt;Bool = &#123;</div><div class="line">    a, b in</div><div class="line">    let v = b+String(a);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 省略in和in前面的代码，参数有 &quot;$&quot;+数字来访问。</div><div class="line">let block1:(Int, String)-&gt;Bool = &#123;</div><div class="line">    var s = $1 + String($0);</div><div class="line">    return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>返回无参数的闭包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func fun3()-&gt;()-&gt;Void&#123;</div><div class="line">    var i:Int = 12;</div><div class="line">    fun4()&#123;</div><div class="line">        var a:Int = 10;</div><div class="line">        print(&quot;\(a+i)&quot;);</div><div class="line">    &#125;</div><div class="line">    return fun4;</div><div class="line">&#125;</div><div class="line">上面的代码将fun4函数返回，此时参数i的释放只有等到fun4函数执行完才可能释放掉了。</div></pre></td></tr></table></figure>
+<blockquote>
+<p>返回有参数有返回值的闭包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">func fun5()-&gt;(Int)-&gt;Bool&#123;</div><div class="line">    var i:Int = 12;</div><div class="line">    func fun6(s:Int)-&gt;Bool&#123;</div><div class="line">        let a:Int = 10;</div><div class="line">        print(&quot;\(a+i)&quot;);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return fun6;</div><div class="line">&#125;</div><div class="line">上面的代码返回的是有参数的闭包。</div></pre></td></tr></table></figure>
+<blockquote>
+<p>将闭包作为函数参数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">func fun1(a:Int, b:String, block:(Int,String)-&gt;Void)&#123;</div><div class="line">    block(a,b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">func test()&#123;</div><div class="line">    </div><div class="line">    fun1(a: 12, b: &quot;34&quot;) &#123; (a, b) in</div><div class="line">        print(&quot;\(a)\(b)&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="尾随闭包"><a href="#尾随闭包" class="headerlink" title="尾随闭包"></a>尾随闭包</h2><blockquote>
+<p>当函数参数中最后一个是闭包，”在函数调用” 时可以将闭包写在函数括号外边。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func fun1(_ a:Int, _ b:String, block:(Int, String)-&gt;String)&#123;</div><div class="line">    NSLog(&quot;%@&quot;, block(a, b));</div><div class="line">&#125;</div><div class="line"></div><div class="line">func test()&#123;</div><div class="line">    fun1(1, &quot;one&quot;) &#123; (a, b)-&gt;String in</div><div class="line">        return String(a) + b;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面fun1函数中第三个参数就是闭包(闭包在最后一个参数上)，<code>在函数调用</code>时闭包放在了fun1函数的括号外，有点像<code>函数体</code>。</p>
+</blockquote>
+<h2 id="逃逸闭包"><a href="#逃逸闭包" class="headerlink" title="逃逸闭包"></a>逃逸闭包</h2><blockquote>
+<p>当函数中有个闭包参数的调用时间超过了函数的生命周期时(<code>在函数调用完毕返回时，都没有使用闭包</code>)，这样的闭包就是逃逸闭包</p>
+<blockquote>
+<p>需要在函数参数后面添加@escaping</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">func request(a:Int, b:Int, block:@escaping (Int, Int)-&gt;Int)&#123;</div><div class="line">    &#123;</div><div class="line">        进行网络请求逻辑，并返回两个Int类型参数。</div><div class="line">    &#125;</div><div class="line">    // 将block中的业务逻辑代码添加到队列中，然后就退出request函数。</div><div class="line">    DispatchQueue.global().async &#123;</div><div class="line">        let c:Int = block(a, b);</div><div class="line">        print(&quot;\(c)&quot;);</div><div class="line">    &#125;</div><div class="line">        print(&quot;推出&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="自动闭包"><a href="#自动闭包" class="headerlink" title="自动闭包"></a>自动闭包</h2><blockquote>
+<p>将表达式传入到函数参数中，函数自动将其封装成闭包。<br>自动闭包不接受任何的参数，可以有返回值。<br>需要在函数参数后面添加@autoclosure</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">func fun3(block: @autoclosure ()-&gt;Bool)&#123;</div><div class="line">    let b:Bool = block();</div><div class="line">&#125;</div><div class="line"></div><div class="line">func test()&#123;</div><div class="line">    let a = 0;</div><div class="line">    let b = 1;</div><div class="line">    // 将a&gt;b表达式放到fun3函数的闭包位置，fun3函数自动将其转换成闭包。</div><div class="line">    fun3(block: a&gt;b)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>自动闭包+逃逸闭包写法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func fun3(block: @autoclosure @escaping ()-&gt;Bool)&#123;</div><div class="line">    let b:Bool = block();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
 
@@ -213,7 +258,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello World</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS-基础</a>
         		</li>
       		
 		</ul>
@@ -269,7 +314,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/05/10/hello/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/02/01/iOS/OC基础/2017-01-02-iOS-swift/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +328,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/02/iOS/Runtime/2017-02-02-iOS-Runtime/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          sqlite-事务基础
+          Runtime－方法解释
         
       </div>
     </a>
   
   
-    <a href="/2017/05/01/Project/lianzi/2017-05-02-iOS-lianzi/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">lianzi-证书基础知识介绍</div>
+    <a href="/2017/02/01/iOS/Runtime/2017-02-01-iOS-Runtime/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OC中实例对象、类对象、元对象</div>
       <i class="icon-circle-right"></i>
     </a>
   

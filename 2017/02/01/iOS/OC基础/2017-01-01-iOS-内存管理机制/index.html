@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://kingofkingss.github.io">
-  <title>hello world | Hexo</title>
+  <title>iOS内存管理机制 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hello world !!">
-<meta name="keywords" content="hello World">
+  <meta name="description" content="所有权与使用权？12345678所有权：拥有这个东西，没有人有权利剥夺这个东西。除非你自己放弃。使用权：可以使用这个东西，但是可以有人剥夺这个东西。举例：政府(系统)将土地(内存空间)分给地主A(拥有所有权)，然后农民(拥有使用权)从地主哪里租借该土地种地。有一天，另一个地主B向地主A协商持有土地所有权，此时地主A、B都有土地所有权。又过了一天，地主A要搬家，放弃了土地的所有权，此时政府不能收回土">
+<meta name="keywords" content="iOS-基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello world">
-<meta property="og:url" content="https://kingofkingss.github.io/2017/05/10/hello/index.html">
+<meta property="og:title" content="iOS内存管理机制">
+<meta property="og:url" content="https://kingofkingss.github.io/2017/02/01/iOS/OC基础/2017-01-01-iOS-内存管理机制/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="hello world !!">
-<meta property="og:updated_time" content="2017-05-11T02:05:48.000Z">
+<meta property="og:description" content="所有权与使用权？12345678所有权：拥有这个东西，没有人有权利剥夺这个东西。除非你自己放弃。使用权：可以使用这个东西，但是可以有人剥夺这个东西。举例：政府(系统)将土地(内存空间)分给地主A(拥有所有权)，然后农民(拥有使用权)从地主哪里租借该土地种地。有一天，另一个地主B向地主A协商持有土地所有权，此时地主A、B都有土地所有权。又过了一天，地主A要搬家，放弃了土地的所有权，此时政府不能收回土">
+<meta property="og:updated_time" content="2017-07-29T05:28:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello world">
-<meta name="twitter:description" content="hello world !!">
+<meta name="twitter:title" content="iOS内存管理机制">
+<meta name="twitter:description" content="所有权与使用权？12345678所有权：拥有这个东西，没有人有权利剥夺这个东西。除非你自己放弃。使用权：可以使用这个东西，但是可以有人剥夺这个东西。举例：政府(系统)将土地(内存空间)分给地主A(拥有所有权)，然后农民(拥有使用权)从地主哪里租借该土地种地。有一天，另一个地主B向地主A协商持有土地所有权，此时地主A、B都有土地所有权。又过了一天，地主A要搬家，放弃了土地的所有权，此时政府不能收回土">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -158,27 +158,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-iOS/OC基础/2017-01-01-iOS-内存管理机制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hello world
+      iOS内存管理机制
     </h1>
   
 
         
-        <a href="/2017/05/10/hello/" class="archive-article-date">
-  	<time datetime="2017-05-10T06:15:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
+        <a href="/2017/02/01/iOS/OC基础/2017-01-01-iOS-内存管理机制/" class="archive-article-date">
+  	<time datetime="2017-02-01T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>hello world !!</p>
+        <h2 id="所有权与使用权？"><a href="#所有权与使用权？" class="headerlink" title="所有权与使用权？"></a>所有权与使用权？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">所有权：拥有这个东西，没有人有权利剥夺这个东西。除非你自己放弃。</div><div class="line">使用权：可以使用这个东西，但是可以有人剥夺这个东西。</div><div class="line"></div><div class="line">举例：</div><div class="line">政府(系统)将土地(内存空间)分给地主A(拥有所有权)，然后农民(拥有使用权)从地主哪里租借该土地种地。</div><div class="line">有一天，另一个地主B向地主A协商持有土地所有权，此时地主A、B都有土地所有权。</div><div class="line">又过了一天，地主A要搬家，放弃了土地的所有权，此时政府不能收回土地，因为地主B对该土地又所有权。农民继续使用土地种地。</div><div class="line">再过了一天，地主B也要搬家，放弃了土地所有权，此时没有人对该土地有所有权，政府将土地收回，农民就不能使用土地种地了。</div></pre></td></tr></table></figure>
+<h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">iOS系统使用引用计数的方式来管理内存空间的分配与释放。</div><div class="line">1、当有指针对该内存拥有所有权时，计数器+1；</div><div class="line">2、当有指针放弃该内存的所有权时，计数器-1；</div><div class="line">3、当引用计数器为0时，内存就会被系统释放。</div><div class="line"></div><div class="line">如何让引用计数器+1:</div><div class="line">当调用alloc、new、copy、retain方法时，引用计数器+1。</div><div class="line"></div><div class="line">如何让引用计数器-1:</div><div class="line">当调用release方法时，引用计数器-1。</div><div class="line"></div><div class="line">当引用计数器==0:</div><div class="line">当内存空间的引用计数器为0时，该内存对象调用dealloc方法，做内存释放前的准备工作。</div></pre></td></tr></table></figure>
+<h2 id="ownership-qualifiers与property-modifier"><a href="#ownership-qualifiers与property-modifier" class="headerlink" title="ownership qualifiers与property modifier"></a>ownership qualifiers与property modifier</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ownership qualifiers == 所有权限制 == 变量前的修饰符</div><div class="line">__weak                == 弱引用，让指针对内存空间有使用权，当内存空间释放时，指针便设为nil；</div><div class="line">__strong              == 强引用，让指针对内存空间有所有权</div><div class="line">__unsafe_unretained   == 弱引用，让指针对内存空间有使用权，当内存空间释放时，指针还是原来的值</div><div class="line">__autoreleasing</div></pre></td></tr></table></figure>
 
       
 
@@ -213,7 +215,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello World</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iOS-基础</a>
         		</li>
       		
 		</ul>
@@ -269,7 +271,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/05/10/hello/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://kingofkingss.github.io/2017/02/01/iOS/OC基础/2017-01-01-iOS-内存管理机制/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,20 +285,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/01/DataBase/Sqlite/2017-06-01-iOS-Sqlite/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/01/iOS/GCD/2017-03-01-iOS-GCD/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          sqlite-事务基础
+          GCD-基本函数
         
       </div>
     </a>
   
-  
-    <a href="/2017/05/01/Project/lianzi/2017-05-02-iOS-lianzi/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">lianzi-证书基础知识介绍</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
